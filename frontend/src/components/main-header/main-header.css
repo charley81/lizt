@@ -1,0 +1,14 @@
+nav {
+  background-color: var(--color-primary);
+  padding: 1rem;
+  color: var(--color-light);
+}
+
+.nav-center {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+h3 {
+  margin: 0;
+}

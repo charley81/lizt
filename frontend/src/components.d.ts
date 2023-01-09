@@ -5,14 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil-community/router";
 export namespace Components {
     interface AppHome {
     }
-    interface AppProfile {
-        "match": MatchResults;
-    }
     interface AppRoot {
+    }
+    interface InputSection {
+    }
+    interface ListSection {
+    }
+    interface MainHeader {
     }
 }
 declare global {
@@ -22,36 +24,56 @@ declare global {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
     };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
-    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLInputSectionElement extends Components.InputSection, HTMLStencilElement {
+    }
+    var HTMLInputSectionElement: {
+        prototype: HTMLInputSectionElement;
+        new (): HTMLInputSectionElement;
+    };
+    interface HTMLListSectionElement extends Components.ListSection, HTMLStencilElement {
+    }
+    var HTMLListSectionElement: {
+        prototype: HTMLListSectionElement;
+        new (): HTMLListSectionElement;
+    };
+    interface HTMLMainHeaderElement extends Components.MainHeader, HTMLStencilElement {
+    }
+    var HTMLMainHeaderElement: {
+        prototype: HTMLMainHeaderElement;
+        new (): HTMLMainHeaderElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "input-section": HTMLInputSectionElement;
+        "list-section": HTMLListSectionElement;
+        "main-header": HTMLMainHeaderElement;
     }
 }
 declare namespace LocalJSX {
     interface AppHome {
     }
-    interface AppProfile {
-        "match"?: MatchResults;
-    }
     interface AppRoot {
+    }
+    interface InputSection {
+        "onNewTask"?: (event: CustomEvent<any>) => void;
+    }
+    interface ListSection {
+    }
+    interface MainHeader {
     }
     interface IntrinsicElements {
         "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
+        "input-section": InputSection;
+        "list-section": ListSection;
+        "main-header": MainHeader;
     }
 }
 export { LocalJSX as JSX };
@@ -59,8 +81,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "input-section": LocalJSX.InputSection & JSXBase.HTMLAttributes<HTMLInputSectionElement>;
+            "list-section": LocalJSX.ListSection & JSXBase.HTMLAttributes<HTMLListSectionElement>;
+            "main-header": LocalJSX.MainHeader & JSXBase.HTMLAttributes<HTMLMainHeaderElement>;
         }
     }
 }
