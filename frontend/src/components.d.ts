@@ -14,7 +14,7 @@ export namespace Components {
     interface InputSection {
     }
     interface ListSection {
-        "task": Task[];
+        "tasks": Task[];
     }
     interface MainHeader {
     }
@@ -67,7 +67,7 @@ declare namespace LocalJSX {
         "onNewTask"?: (event: CustomEvent<any>) => void;
     }
     interface ListSection {
-        "task"?: Task[];
+        "tasks"?: Task[];
     }
     interface MainHeader {
     }

@@ -5,7 +5,6 @@ import Tasks from '../models/task-model.js';
 // @route GET /api/tasks
 // @access public
 const getTasks = asyncHandler(async (req, res) => {
-  console.log('get tasks');
   const tasks = await Tasks.find();
   res.status(200).json(tasks);
 });

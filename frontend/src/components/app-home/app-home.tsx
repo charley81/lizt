@@ -1,4 +1,4 @@
-import { Component, h, Host, State, Listen } from '@stencil/core';
+import { Component, h, Host, State, Listen, Watch } from '@stencil/core';
 import { Task } from '../../interfaces/interfaces';
 
 @Component({
@@ -30,6 +30,7 @@ export class AppHome {
     }
   }
 
+  @Watch('tasks')
   async getTasks() {
     try {
       const response = await fetch(this.URL);
@@ -55,7 +56,7 @@ export class AppHome {
       <Host>
         <main-header></main-header>
         <input-section></input-section>
-        <list-section task={this.tasks}></list-section>
+        <list-section tasks={this.tasks}></list-section>
       </Host>
     );
   }

@@ -7,15 +7,9 @@ import { Task } from '../../interfaces/interfaces';
   shadow: true,
 })
 export class ListSection {
-  @Prop() task: Task[] = [];
+  @Prop() tasks: Task[] = [];
 
   render() {
-    return (
-      <ul>
-        {this.task.map(item => (
-          <li>{item.task}</li>
-        ))}
-      </ul>
-    );
+    return <ul>{!this.tasks.length ? <li>no task to show</li> : this.tasks.map(item => <li>{item.task}</li>)}</ul>;
   }
 }
