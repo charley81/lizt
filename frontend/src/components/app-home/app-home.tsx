@@ -14,14 +14,22 @@ export class AppHome {
   ];
 
   @Listen('newTask')
-  newTask(e) {
-    console.log(e.detail);
-    const newTask = {
-      task: e.detail,
-      completed: false,
-    };
-
-    this.tasks = [...this.tasks, newTask];
+  async newTask(e) {
+    try {
+      const newTask = {
+        task: e.detail,
+        completed: false,
+      };
+      await fetch('http://localhost:8001/api/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTask),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
