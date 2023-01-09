@@ -11,13 +11,15 @@ export class AppHome {
 
   @State() tasks: Task[] = [];
 
+  // add a new task
   @Listen('newTask')
   async newTask(e) {
+    const newTask = {
+      task: e.detail,
+      completed: false,
+    };
+
     try {
-      const newTask = {
-        task: e.detail,
-        completed: false,
-      };
       await fetch(this.URL, {
         method: 'POST',
         headers: {
@@ -25,12 +27,26 @@ export class AppHome {
         },
         body: JSON.stringify(newTask),
       });
+      this.getTasks();
     } catch (error) {
       console.log(error);
     }
   }
 
-  @Watch('tasks')
+  @Listen('deleteTask')
+  async deleteTask(data: Event) {
+    console.log(`${this.URL}/${data['detail']._id}`);
+    try {
+      await fetch(`${this.URL}/${data['detail']._id}`, {
+        method: 'DELETE',
+      });
+      this.getTasks();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // get tasks from DB
   async getTasks() {
     try {
       const response = await fetch(this.URL);
@@ -42,12 +58,8 @@ export class AppHome {
   }
 
   // lifecycle methods
-  connectedCallback() {
+  componentWillLoad() {
     // get/set initial task from DB
-    this.getTasks();
-  }
-
-  componentWillUpdate() {
     this.getTasks();
   }
 

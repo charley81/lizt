@@ -67,6 +67,7 @@ declare namespace LocalJSX {
         "onNewTask"?: (event: CustomEvent<any>) => void;
     }
     interface ListSection {
+        "onDeleteTask"?: (event: CustomEvent<any>) => void;
         "tasks"?: Task[];
     }
     interface MainHeader {
