@@ -7,11 +7,9 @@ import { Task } from '../../interfaces/interfaces';
   shadow: true,
 })
 export class AppHome {
-  @State() tasks: Task[] = [
-    { task: 'build CRUD app', completed: false },
-    { task: 'setup studio', completed: true },
-    { task: 'produce fire track', completed: false },
-  ];
+  URL = 'http://localhost:8001/api/tasks';
+
+  @State() tasks: Task[] = [];
 
   @Listen('newTask')
   async newTask(e) {
@@ -20,7 +18,7 @@ export class AppHome {
         task: e.detail,
         completed: false,
       };
-      await fetch('http://localhost:8001/api/tasks', {
+      await fetch(this.URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,6 +28,22 @@ export class AppHome {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async getTasks() {
+    try {
+      const response = await fetch(this.URL);
+      const json = await response.json();
+      this.tasks = json;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // lifecycle methods
+  connectedCallback() {
+    // get/set initial task from DB
+    this.getTasks();
   }
 
   render() {
