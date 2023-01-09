@@ -13,6 +13,7 @@
   --color-light: #fbfdff;
   --color-grey-dark: #29313a;
   --color-dark: #040b12;
+  --color-danger: #993a25;
 
   /* utilities */
   --transition: all 0.2s ease-in-out;
