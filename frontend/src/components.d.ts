@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Task } from "./interfaces/interfaces";
 export namespace Components {
     interface AppHome {
     }
@@ -13,6 +14,7 @@ export namespace Components {
     interface InputSection {
     }
     interface ListSection {
+        "task": Task[];
     }
     interface MainHeader {
     }
@@ -65,6 +67,7 @@ declare namespace LocalJSX {
         "onNewTask"?: (event: CustomEvent<any>) => void;
     }
     interface ListSection {
+        "task"?: Task[];
     }
     interface MainHeader {
     }

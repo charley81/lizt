@@ -1,4 +1,5 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+import { Task } from '../../interfaces/interfaces';
 
 @Component({
   tag: 'list-section',
@@ -6,11 +7,16 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class ListSection {
+  @Prop() task: Task[] = [];
+
   render() {
+    console.log(this.task);
     return (
-      <Host>
-        <h3>list section</h3>
-      </Host>
+      <ul>
+        {this.task.map(item => (
+          <li>{item.task}</li>
+        ))}
+      </ul>
     );
   }
 }

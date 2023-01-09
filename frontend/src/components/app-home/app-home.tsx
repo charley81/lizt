@@ -29,7 +29,7 @@ export class AppHome {
       <Host>
         <main-header></main-header>
         <input-section></input-section>
-        <list-section></list-section>
+        <list-section task={this.tasks}></list-section>
       </Host>
     );
   }
