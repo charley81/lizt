@@ -10,7 +10,6 @@ export class ListSection {
   @Prop() task: Task[] = [];
 
   render() {
-    console.log(this.task);
     return (
       <ul>
         {this.task.map(item => (

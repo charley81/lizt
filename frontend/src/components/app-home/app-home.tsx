@@ -46,6 +46,10 @@ export class AppHome {
     this.getTasks();
   }
 
+  componentWillUpdate() {
+    this.getTasks();
+  }
+
   render() {
     return (
       <Host>
