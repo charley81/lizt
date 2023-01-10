@@ -40,7 +40,6 @@ const updateTask = asyncHandler(async (req, res) => {
   const updatedTask = await Tasks.findByIdAndUpdate(req.params.id, req.body, {
     new: true
   });
-
   res.status(200).json(updatedTask);
 });
 

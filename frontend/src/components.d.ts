@@ -84,6 +84,7 @@ declare namespace LocalJSX {
     interface TaskItem {
         "item"?: Task;
         "onDeleteTask"?: (event: CustomEvent<any>) => void;
+        "onUpdateTask"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "app-home": AppHome;

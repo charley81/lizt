@@ -8,7 +8,7 @@ import { Task } from '../../interfaces/interfaces';
 })
 export class TaskItem {
   // props
-  @Prop() item: Task;
+  @Prop({ mutable: true }) item: Task;
 
   // state
   @State() editing: boolean = false;
@@ -16,22 +16,27 @@ export class TaskItem {
 
   // events
   @Event() deleteTask: EventEmitter;
+  @Event() updateTask: EventEmitter;
 
   // methods
   handleInputChange(e: Event) {
     this.task = (e.target as HTMLInputElement).value;
   }
 
+  handleUpdateTask(task: string) {
+    const updatedTask = { ...this.item, task };
+    this.updateTask.emit(updatedTask);
+  }
+
   handleDeleteTask(task: Task) {
     this.deleteTask.emit(task);
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.task = this.item['task'];
   }
 
   render() {
-    console.log('task: ', this.task);
     let taskContent: HTMLInputElement | string;
     if (this.editing) {
       taskContent = (
@@ -41,6 +46,7 @@ export class TaskItem {
             <button
               onClick={() => {
                 this.editing = false;
+                this.handleUpdateTask(this.task);
               }}
             >
               save
@@ -52,7 +58,7 @@ export class TaskItem {
     } else {
       taskContent = (
         <Fragment>
-          <li>{this.item['task']}</li>
+          <li>{this.task}</li>
           <span class="icons">
             <ion-icon
               name="create-outline"

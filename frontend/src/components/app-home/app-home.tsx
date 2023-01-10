@@ -47,6 +47,22 @@ export class AppHome {
     }
   }
 
+  // update a task
+  @Listen('updateTask')
+  async updateTask(data: Event) {
+    try {
+      await fetch(`${this.URL}/${data['detail']._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data['detail']),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   // get tasks from DB
   async getTasks() {
     try {
