@@ -7,6 +7,7 @@ import { Task } from '../../interfaces/interfaces';
   shadow: true,
 })
 export class AppHome {
+  // api URL
   URL = 'http://localhost:8001/api/tasks';
 
   @State() tasks: Task[] = [];
@@ -33,9 +34,9 @@ export class AppHome {
     }
   }
 
+  // delete a task
   @Listen('deleteTask')
   async deleteTask(data: Event) {
-    console.log(`${this.URL}/${data['detail']._id}`);
     try {
       await fetch(`${this.URL}/${data['detail']._id}`, {
         method: 'DELETE',
@@ -59,7 +60,7 @@ export class AppHome {
 
   // lifecycle methods
   componentWillLoad() {
-    // get/set initial task from DB
+    // get/set initial task from DB before the component loads
     this.getTasks();
   }
 

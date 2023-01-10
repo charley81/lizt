@@ -10,24 +10,3 @@ ul {
   margin: 0 auto;
   padding: 1rem;
 }
-
-li {
-  margin: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.icons {
-  font-size: 1.25rem;
-  cursor: pointer;
-}
-
-.edit {
-  color: var(--color-primary);
-}
-
-.delete {
-  margin-left: 0.5rem;
-  color: var(--color-danger);
-}

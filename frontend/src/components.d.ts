@@ -18,6 +18,9 @@ export namespace Components {
     }
     interface MainHeader {
     }
+    interface TaskItem {
+        "item": Task;
+    }
 }
 declare global {
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
@@ -50,12 +53,19 @@ declare global {
         prototype: HTMLMainHeaderElement;
         new (): HTMLMainHeaderElement;
     };
+    interface HTMLTaskItemElement extends Components.TaskItem, HTMLStencilElement {
+    }
+    var HTMLTaskItemElement: {
+        prototype: HTMLTaskItemElement;
+        new (): HTMLTaskItemElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-root": HTMLAppRootElement;
         "input-section": HTMLInputSectionElement;
         "list-section": HTMLListSectionElement;
         "main-header": HTMLMainHeaderElement;
+        "task-item": HTMLTaskItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -67,10 +77,13 @@ declare namespace LocalJSX {
         "onNewTask"?: (event: CustomEvent<any>) => void;
     }
     interface ListSection {
-        "onDeleteTask"?: (event: CustomEvent<any>) => void;
         "tasks"?: Task[];
     }
     interface MainHeader {
+    }
+    interface TaskItem {
+        "item"?: Task;
+        "onDeleteTask"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "app-home": AppHome;
@@ -78,6 +91,7 @@ declare namespace LocalJSX {
         "input-section": InputSection;
         "list-section": ListSection;
         "main-header": MainHeader;
+        "task-item": TaskItem;
     }
 }
 export { LocalJSX as JSX };
@@ -89,6 +103,7 @@ declare module "@stencil/core" {
             "input-section": LocalJSX.InputSection & JSXBase.HTMLAttributes<HTMLInputSectionElement>;
             "list-section": LocalJSX.ListSection & JSXBase.HTMLAttributes<HTMLListSectionElement>;
             "main-header": LocalJSX.MainHeader & JSXBase.HTMLAttributes<HTMLMainHeaderElement>;
+            "task-item": LocalJSX.TaskItem & JSXBase.HTMLAttributes<HTMLTaskItemElement>;
         }
     }
 }
